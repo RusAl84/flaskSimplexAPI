@@ -19,7 +19,9 @@ def simplex_optimize():  # put application's code here
     # param = {}
     # param['z'] = z
     # param['rests'] = rests
+    print(request.data)
     json_data = request.json
+
     z = json_data["z"]
     rests = json_data["rests"]
     str1 = optimize(z, rests)
