@@ -10,6 +10,10 @@ CORS(app)
 def default_route():  # put application's code here
     return 'Optimize pulp LP Problem'
 
+@app.route('/about')
+def default_about():  # put application's code here
+    return 'App for optimize pulp LP Problem'
+
 @app.route('/api/optimize', methods=['POST'])
 def simplex_optimize():  # put application's code here
     # z = [6, 1, 5]
