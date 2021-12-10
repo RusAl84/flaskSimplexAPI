@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from simplex import optimize
 
@@ -13,6 +13,17 @@ def default_route():  # put application's code here
 @app.route('/about')
 def default_about():  # put application's code here
     return 'App for optimize pulp LP Problem'
+
+@app.route('/api/test', methods=['POST'])
+def default_test():  # put application's code here
+    json_data = request.json
+    # print(json_data)
+    name = json_data["name"]
+    result = name + " KOZEL"
+    data={}
+    data['name']=result
+    print(result)
+    return jsonify(data)
 
 @app.route('/api/optimize', methods=['POST'])
 def simplex_optimize():  # put application's code here
@@ -30,7 +41,6 @@ def simplex_optimize():  # put application's code here
     str1 = optimize(z, rests)
     print(str1)
     return str1
-
 
 if __name__ == '__main__':
     app.run()
