@@ -5,7 +5,7 @@ def optimize(z, rests):
     x1 = pulp.LpVariable('x1', 0, None)
     x2 = pulp.LpVariable('x2', 0, None)
     x3 = pulp.LpVariable('x3', 0, None)
-    prob += z[0] * x1 + z[1] * x2 + z[2] * x3
+    prob += int(z[0]) * x1 + z[1] * x2 + z[2] * x3
     for rest in rests:
         prob += rest[0] * x1 + rest[1] * x2 + rest[2] * x3 <= rest[3]
     prob.solve()
